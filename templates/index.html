@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BUS TICKET BOOKING</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8c8dc; 
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-banner {
+            background-color: #f5f5dc; 
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Trebuchet MS', sans-serif;
+            width: 100%;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            width: 400px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            background-color: #f5f5dc;
+            color: black;
+            padding: 12px;
+            border: none;
+            width: 100%;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #e0dcbc;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 14px;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .alert {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 5px;
+            text-align: center;
+            margin: 20px auto;
+            width: 80%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-banner">
+        BUS TICKET BOOKING 🚌
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert">{{ messages[0] }}</div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <h2>Reserve Your Seat</h2>
+        <form action="/book" method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="tel" name="phone" placeholder="Phone" required>
+            <input type="text" name="origin" placeholder="Origin" required>
+            <input type="text" name="destination" placeholder="Destination" required>
+            <input type="date" name="date" required>
+            <input type="number" name="seats" placeholder="Number of Seats" required>
+            <button type="submit">Book Now</button>
+        </form>
+    </div>
+
+    <div class="footer-note">
+        Visit our site <a href="https://busco.com" target="_blank">busco.com</a> for more information
+    </div>
+
+</body>
+</html>
